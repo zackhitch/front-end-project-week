@@ -5,7 +5,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Lambda Notes</h1>
+        <div className="navCol">
+          <header>Lambda School</header>
+        </div>
       </div>
     );
   }
