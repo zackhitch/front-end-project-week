@@ -28,9 +28,16 @@ export const notesReducer = (state = initialState, action) => {
     case actionTypes.POST_NOTE_START:
       return { ...state, isAdding: true };
     case actionTypes.POST_NOTE_SUCCESS:
-      return { ...state, isAdding: false, notes: action.payload };
+      return {
+        ...state,
+        isAdding: false,
+        notes: [...state.notes, action.payload],
+      };
     case actionTypes.POST_NOTE_ERROR:
       return { ...state, isAdding: false, error: action.payload };
+    case actionTypes.SET_NOTE_TO_PUT:
+      const note = state.notes.find(note => note._id === action.payload);
+      return { ...state, noteToUpdate: note ? note : null };
     case actionTypes.PUT_NOTE_START:
       return { ...state, isUpdating: true };
     case actionTypes.PUT_NOTE_SUCCESS:

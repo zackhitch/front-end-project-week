@@ -12,6 +12,8 @@ export const POST_NOTE_START = 'POST_NOTE_START';
 export const POST_NOTE_SUCCESS = 'POST_NOTE_SUCCESS';
 export const POST_NOTE_ERROR = 'POST_NOTE_ERROR';
 
+export const SET_NOTE_TO_PUT = 'SET_NOTE_TO_PUT';
+
 export const PUT_NOTE_START = 'PUT_NOTE_START';
 export const PUT_NOTE_SUCCESS = 'PUT_NOTE_SUCCESS';
 export const PUT_NOTE_ERROR = 'PUT_NOTE_ERROR';
@@ -26,6 +28,7 @@ export const getNotes = () => dispatch => {
   axios
     .get(`https://killer-notes.herokuapp.com/note/get/all`)
     .then(response => {
+      console.log(`GET RESPONSE DATA: `, response.data);
       dispatch({ type: GET_NOTES_SUCCESS, payload: response.data });
     })
     .catch(err => {
@@ -52,11 +55,24 @@ export const postNote = note => dispatch => {
   axios
     .post(`https://killer-notes.herokuapp.com/note/create`, note)
     .then(response => {
-      dispatch({ type: POST_NOTE_SUCCESS, payload: response.data });
+      console.log(`POST RESPONSE DATA: `, response.data);
+      const newNote = {
+        _id: response.data.success,
+        title: note.title,
+        textBody: note.textBody,
+      };
+      dispatch({ type: POST_NOTE_SUCCESS, payload: newNote });
     })
     .catch(err => {
       dispatch({ type: POST_NOTE_ERROR, payload: err });
     });
+};
+
+export const setNoteToPut = id => {
+  return {
+    type: SET_NOTE_TO_PUT,
+    payload: id,
+  };
 };
 
 export const putNote = note => dispatch => {
