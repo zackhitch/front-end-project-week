@@ -1,4 +1,14 @@
 import React from 'react';
+import styled from 'styled-components';
+import { withRouter } from 'react-router-dom';
+
+const NoteBox = styled.div`
+  width: 200px;
+  height: 200px;
+  border: 2px solid black;
+  margin: 10px;
+  background-color: white;
+`;
 
 const NotesList = props => {
   return (
@@ -6,14 +16,17 @@ const NotesList = props => {
       <h3>Notes:</h3>
       {console.log(`NOTES LIST: `, props)}
       {props.notes.map(note => (
-        <div className="noteBox" key={note._id}>
-          <p>{note._id}</p>
+        <NoteBox
+          className="noteBox"
+          key={note._id}
+          onClick={() => props.history.push(`/notes/${note._id}`)}
+        >
           <p>{note.title}</p>
           <p>{note.textBody}</p>
-        </div>
+        </NoteBox>
       ))}
     </div>
   );
 };
 
-export default NotesList;
+export default withRouter(NotesList);

@@ -7,9 +7,12 @@ import { postNote, putNote } from '../actions';
 import NoteForm from '../components/NoteForm/NoteForm';
 
 const NoteFormContainer = styled.div`
-  width: 83.7%;
+  width: 83.99%;
+  height: 100%;
+  min-height: 100vh;
   border: 2px dashed red;
   float: right;
+  background-color: #f2f1f2;
 `;
 
 class NoteFormView extends Component {
@@ -18,13 +21,14 @@ class NoteFormView extends Component {
       title: '',
       textBody: '',
     },
-    isUpdating: false,
+    // isUpdating: false,
   };
 
   componentDidMount() {
-    if (this.props.noteToUpdate) {
-      this.setState({ isUpdating: true, note: this.props.noteToUpdate });
-    }
+    console.log(this.props);
+    // if (this.props.noteToUpdate) {
+    //   this.setState({ isUpdating: true, note: this.props.noteToUpdate });
+    // }
   }
 
   handleChange = e => {
@@ -36,13 +40,13 @@ class NoteFormView extends Component {
   handleAddNewNote = e => {
     e.preventDefault();
     this.props.postNote(this.state.note);
-    this.props.history.push('/');
+    this.props.history.push('/notes');
   };
 
-  handleUpdateNote = () => {
-    this.props.putNote(this.state.note);
-    this.props.history.push('/');
-  };
+  // handleUpdateNote = () => {
+  //   this.props.putNote(this.state.note);
+  //   this.props.history.push('/notes');
+  // };
 
   render() {
     return (
@@ -52,8 +56,8 @@ class NoteFormView extends Component {
           note={this.state.note}
           handleChange={this.handleChange}
           handleAddNewNote={this.handleAddNewNote}
-          handleUpdateNote={this.handleUpdateNote}
-          isUpdating={this.state.isUpdating}
+          // handleUpdateNote={this.handleUpdateNote}
+          // isUpdating={this.state.isUpdating}
         />
       </NoteFormContainer>
     );

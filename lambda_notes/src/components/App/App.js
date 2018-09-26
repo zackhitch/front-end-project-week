@@ -5,6 +5,7 @@ import './App.css';
 import Navigation from '../Navigation/Navigation';
 import NotesListView from '../../views/NotesListView';
 import NoteFormView from '../../views/NoteFormView';
+import NoteView from '../../views/NoteView';
 
 class App extends Component {
   render() {
@@ -13,8 +14,9 @@ class App extends Component {
         <div className="navCol">
           <Navigation />
         </div>
-        <Route exact path="/" component={NotesListView} />
-        <Route path="/add" component={NoteFormView} />
+        <Route exact path="/notes" component={NotesListView} />
+        <Route exact path="/notes/add" component={NoteFormView} />
+        <Route exact path="/notes/:id" component={NoteView} />
       </div>
     );
   }

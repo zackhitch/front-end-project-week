@@ -47,7 +47,7 @@ export const notesReducer = (state = initialState, action) => {
     case actionTypes.DELETE_NOTE_START:
       return { ...state, isDeleting: true };
     case actionTypes.DELETE_NOTE_SUCCESS:
-      return { ...state, isDeleting: false, notes: action.payload };
+      return { ...state, isDeleting: false };
     case actionTypes.DELETE_NOTE_ERROR:
       return { ...state, isDeleting: false, error: action.payload };
     default:

@@ -2,17 +2,17 @@ import React, { Fragment } from 'react';
 
 const NoteForm = props => {
   const handleSubmit = e => {
-    e.preventDefault();
-    if (props.isUpdating) {
-      props.handleUpdateNote();
-    } else {
-      props.handleAddNewNote(e);
-    }
+    //   e.preventDefault();
+    //   if (props.isUpdating) {
+    //     props.handleUpdateNote();
+    //   } else {
+    props.handleAddNewNote(e);
+    // }
   };
 
   return (
     <Fragment>
-      <h2>{props.isUpdating ? 'Update Note' : 'Add New Note'}</h2>
+      {/* <h2>{props.isUpdating ? 'Update Note' : 'Add New Note'}</h2> */}
       <form>
         <div className="group">
           <input

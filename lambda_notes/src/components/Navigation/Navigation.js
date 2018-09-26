@@ -18,7 +18,7 @@ const ButtonContainer = styled.div`
 
 const Button = styled.div`
   border: 1px solid black;
-  background-color: chartreuse;
+  background-color: #30b8bc;
   margin: 10px 20px;
   width: 75%;
   height: 30px;
@@ -34,10 +34,10 @@ class Navigation extends Component {
         <header>Lambda Notes</header>
         <ButtonContainer>
           <Button>
-            <NavLink to="/">View Your Notes</NavLink>
+            <NavLink to="/notes">View Your Notes</NavLink>
           </Button>
           <Button>
-            <NavLink to="/add">+ Create New Note</NavLink>
+            <NavLink to="/notes/add">+ Create New Note</NavLink>
           </Button>
         </ButtonContainer>
       </NavColumn>
